@@ -12,7 +12,7 @@ urlpatterns = [
     path('contact/', views.ContactView, name='Contact'),
     path('<slug:slug>/teams/', views.AllTeams, name='Teams'),
     path('cancel-team/', views.CancelTeamRegisteration, name='Cancel-Team'),
-    path('accounts/signup/', views.Signup, name='Signup'),
-    path('accounts/login/', views.Login, name='Login'),
-    path('accounts/logout/', views.Logout, name='Logout'),
+    path('signup/', views.Signup, name='Signup'),
+    path('login/', views.Login, name='Login'),
+    path('logout/', views.Logout, name='Logout'),
 ]
