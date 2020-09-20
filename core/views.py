@@ -42,7 +42,7 @@ def TournamentDetail(request, slug):
     return render(request, 'detail.html', context)
 
 
-@login_required('login/')
+@login_required(login_url='login/')
 def Register(request, slug):
     t = Tournament.objects.get(slug=slug)
     form = RForm(request.POST or None)
@@ -142,7 +142,7 @@ def Register(request, slug):
     return render(request, 'register.html', context)
 
 
-@login_required('login/')
+@login_required(login_url='login/')
 def PaymentView(request, payment_option):
 
     try:
@@ -203,7 +203,7 @@ def AllTeams(request, slug):
     return render(request, 'teams.html', context)
 
 
-@login_required('login/')
+@login_required(login_url='login/')
 def CancelRegisteration(request):
     try:
         teams = Teams.objects.get(user=request.user, registered=False)
@@ -217,7 +217,7 @@ def CancelRegisteration(request):
     return redirect('core:Home')
 
 
-@login_required
+@login_required(login_url='login/')
 def CancelTeamRegisteration(request):
     try:
         teams = Teams.objects.get(user=request.user)
@@ -236,7 +236,7 @@ def CancelTeamRegisteration(request):
     return redirect('core:Home')
 
 
-@login_required
+@login_required(login_url='login/')
 def ContactView(request):
     if request.method == 'POST':
         name = request.POST.get('name')
