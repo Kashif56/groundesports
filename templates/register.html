@@ -1,0 +1,130 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block content%}
+
+<style>
+    .subtitle {
+        color: black;
+    }
+
+    .checkout-form {
+        padding: 50px 40px;
+        width: 60%;
+        margin-top: 20%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10%;
+        box-shadow: rgb(0, 0, 0, 0.2) 4px 4px 10px;
+    }
+
+    input {
+        margin-bottom: 20px;
+        width: 90%;
+        height: 30px;
+        padding: .4%;
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+    }
+
+    input:focus {
+        border-bottom: 2px rgb(58, 0, 194) solid;
+        outline: none;
+    }
+
+    .payment-method {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .method {
+        align-items: center;
+        display: flex;
+    }
+
+    .p-label {
+        letter-spacing: 2px;
+        margin-left: 20px;
+    }
+
+    .radio {
+        text-align: center;
+        margin: 0;
+        width: 3%;
+    }
+
+    .container-error {
+        margin-top: 100px;
+        background-color: yellow;
+    }
+
+    .error {
+        padding: 10px 20px;
+        background-color: rgb(255, 196, 0);
+        font-size: 18px;
+        letter-spacing: 3px;
+        width: 100%;
+        color: black;
+    }
+</style>
+<main>
+    <div class="container-error">
+        {% for message in messages %}
+        <h6 class="error">{{message}}</h6>
+        {% endfor %}
+    </div>
+
+
+    <!-- Checkout Form -->
+    <div class="checkout-form">
+        <h1 class="subtitle pb-5">
+            Register Now
+        </h1>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {{form.title}}
+            {{form.team_name}}
+            {{form.team_tag}}
+
+
+            {{form.team_number}}
+            <br><br>
+            <h2>Players Detail</h2><br>
+            {{form.player1_ign}}
+            {{form.player1_id}}
+            <br><br>
+            {{form.player2_ign}}
+            {{form.player2_id}}
+            <br><br>
+            {{form.player3_ign}}
+            {{form.player3_id}}
+            <br><br>
+            {{form.player4_ign}}
+            {{form.player4_id}}
+            <br><br>
+            {{form.player5_ign}}
+            {{form.player5_id}}
+            <br><br>
+
+            <h2 class="pb-3">Payment Method:</h2>
+            <div class="payment-method">
+                {% for value, name in form.fields.payment_method.choices %}
+                <div class="method">
+                    <input class="radio" type="radio" value="{{value}}" name="payment_method" id="{{name}}" required>
+                    <p class="p-label">{{name}}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <button type="submit" class="btn primary_btn">Submit</button>
+
+        </form>
+    </div>
+</main>
+{%endblock%}

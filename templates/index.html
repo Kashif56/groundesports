@@ -1,0 +1,238 @@
+{%extends 'base.html'%} {% load static %} {% block navitems %}
+<li class="nav-item"><a class="nav-link" href="#About">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#Tournament">Tournament</a> {% endblock navitems %} {%block content%}
+
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .error {
+            background-color: yellow;
+            font-size: 18px;
+            padding: 10px 20px;
+            letter-spacing: 3px;
+            color: black;
+        }
+        
+        .container-1 {
+            width: 100%;
+            margin-top: 100px;
+        }
+    </style>
+
+    </div>
+    <!--================Home Banner Area =================-->
+    <section class="home_banner_area">
+        <div class="container-1">
+            {% for message in messages %}
+            <p class="error">{{ message }}</p>
+            {% endfor %}
+        </div>
+        <div class="banner_inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="home_left_img">
+                            <img class="img-fluid" src="{% static 'img/banner/home-left.png' %}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="banner_content">
+                            <h2>
+                                Pakistan's No 1 <br> Tournament organizing <br> management.
+                            </h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=vParh5wE-tM">
+                                    <span></span>
+                                </a>
+                                <div class="watch_video text-uppercase">
+                                    watch the video
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <!--================Start About Us Area =================-->
+    <section class="about_us_area section_gap_top" id="About">
+        <div class="container">
+            <div class="row about_content align-items-center">
+                <div class="col-lg-6">
+                    <div class="section_content">
+                        <h6>About Us</h6>
+                        <h1>We Believe that <br>Interior beauty Lasts Long</h1>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                        <a class="primary_btn" href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about_us_image_box justify-content-center">
+                        <img class="img-fluid w-100" src="{% static 'img/Pubg-1.jpg' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End About Us Area =================-->
+
+    <!--================First Upcoming Games Area =================-->
+    {% if team %}
+    <div class="container mt-5 bg-dark w-100 pt-3 pb-3 pl-auto pr-auto">
+
+        <p style="color: white;
+	 letter-spacing:2px;
+	 font-size: 17px;">Please Pay your Registeration Fee to Register your team.</p>
+        <a href="payment/hbl/" class="btn btn-warning">Pay Now</a>
+
+    </div>
+    {% endif %}
+
+    <section class="upcoming_games_area" id="Tournament">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% if tournaments %}
+                    <div class="main_title">
+                        <h2>Tournament</h2>
+                        <h1>Tournament</h1>
+                    </div>
+                    {% else %}
+                    <div class="main_title">
+                        <h2>No Tournament</h2>
+                        <h1>No Tournament</h1>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if rt %}
+            <div class="container mt-5 bg-dark w-100 pt-3 pb-3 pl-auto pr-auto">
+
+                <p style="color: white;
+			 letter-spacing:2px;
+			 font-size: 17px;">Your Team is Registered in the Tournament.</p>
+                <a href="{% url 'core:Cancel-Team' %}" class="btn btn-danger">Cancel Registeration</a> {% for t in tournaments %}
+                <a href="{{t.slug}}/teams/" class="btn btn-primary ml-4">Check Registered Teams</a> {% endfor %}
+            </div>
+
+
+            {% else %}
+
+            <div class="row text-center">
+                {% for t in tournaments %}
+                <div class="col-lg-5 col-md-6 col-sm-6 mb-5 ml-auto mr-auto">
+                    <div class="new_games_item">
+                        <img src="{{t.image.url}}">
+                        <div class="upcoming_title">
+                            <h3><a href="{{t.get_absolute_url}}">{{t.title}}</a></h3>
+
+                        </div>
+                    </div>
+                    <a href="{{t.get_registeration_url}}" class="btn primary_btn">Register Now</a>
+                </div>
+
+
+                {% empty %}
+                <h5 class="ml-auto mr-auto">Sorry, Currently there is no Tournament.</h5>
+                {%endfor%}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <!--================End Upcoming Games Area =================-->
+
+
+
+
+
+    <!--================ Start Frequently Asked Questions Area ================-->
+    <section class="frequently_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h2>Frequently Asked Questions</h2>
+                        <h1>Frequently Asked Questions</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row frequent_inner">
+                <div class="col-lg-5 col-md-5">
+                    <div class="frequent_item">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+                <div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+                    <div class="frequent_item">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="frequent_item">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+                <div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+                    <div class="frequent_item">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="frequent_item last-child">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+                <div class="offset-lg-2 col-lg-5 offset-md-2 col-md-5">
+                    <div class="frequent_item last-child">
+                        <h3>We Believe that Interior beauty Lasts Long</h3>
+                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that as women.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Frequently Asked Questions Area ================-->
+
+
+    <!--================ Start Newsletter Area ================-->
+    <section class="newsletter_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="newsletter_inner">
+                        <h1>Subscribe Our Newsletter</h1>
+                        <p>We won’t send any kind of spam</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <aside class="newsletter_widget">
+                        <div id="mc_embed_signup">
+                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                <div class="input-group d-flex flex-row">
+                                    <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'" required="" type="email">
+                                    <button class="btn primary_btn">Subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Newsletter Area ================-->
+    {%endblock%}

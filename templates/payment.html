@@ -1,0 +1,81 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    input {
+        margin-bottom: 20px;
+        width: 90%;
+        height: 30px;
+        padding: .4%;
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+    }
+
+    input:focus {
+        border-bottom: 2px rgb(58, 0, 194) solid;
+        outline: none;
+    }
+
+    .error {
+        background-color: lightgreen;
+        font-size: 18px;
+        padding: 10px 20px;
+        letter-spacing: 3px;
+        color: black;
+    }
+
+    .container-1 {
+        width: 100%;
+    }
+
+    .fee {
+        font-size: 18px;
+        color: rgb(89, 0, 255);
+    }
+</style>
+
+<main class="pt-5">
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+                data-background="">
+            </div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <div class="page_link">
+                        <a href="{% url 'core:Home' %}">Home</a>
+                        <a href="\payment\hbl\">Payment</a>
+                    </div>
+                    <h2>PAY NOW</h2>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-1">
+        <div class="container-1">
+            {% for message in messages %}
+            <p class="error">{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container mt-5 mb-5 pb-5">
+        <div class="card-body w-100 mt-5 mb-5">
+            <h3 class="card-text label">Pay Here</h3><br>
+            <form action="." method="post">
+                {%csrf_token%}
+                <input type="text" name="card" placeholder="Card Number"><br>
+                <h5 class="fee">Please Pay $<span class="fee"> {{teams}}</span></h5><br>
+                <button class="btn primary_btn" type="submit">Pay</button>
+                <a href="{% url 'core:Cancel' %}" class="btn btn-default ml-4">Cancel</a>
+            </form>
+        </div>
+    </div>
+</main>
+
+{%endblock%}

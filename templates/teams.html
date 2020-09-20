@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<main class="pt-5">
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+            </div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <div class="page_link">
+                        <a href="{% url 'core:Home' %}">Home</a>
+                        <a href="">Teams</a>
+                    </div>
+                    <h2>Check Teams</h2>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container pb-5 mt-5 mb-5">
+        <div class="home-banner-area mt-5">
+            <div class="table-responsive">
+                <table class="table table-hover w-75 ml-auto mr-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Team Name</th>
+                            <th scope="col">Team Tag</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{team.team_name}}</td>
+                            <td>{{team.team_tag}}</td>
+                            <td>{{team.registered}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td>No Team registered yet</td>
+                            <td>
+                                <a href="{{t.get_registeration_url}}" class="btn primary_btn">Register Now</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

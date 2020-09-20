@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+{%for message in messages%}
+<h6 class="error">{{message}}</h6>
+{%endfor%}
+<style>
+    .container-1 {
+        width: 60%;
+        margin: 150px auto;
+    }
+
+    .container-1 span {
+        color: rgb(132, 0, 255);
+        font-weight: bold;
+    }
+
+    .product-title {
+        color: black;
+    }
+
+    .subtitle {
+        color: black;
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+<main>
+    <!--================Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+                data-background="">
+            </div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <div class="page_link">
+                        <a href="{% url 'core:Home' %}">Home</a>
+                        <a href="{{tournament.get_absolute_url}}">Tournament Detail</a>
+                    </div>
+                    <h2>Tournament DETAIL</h2>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+    <div class="container-1">
+        <img class="ml-auto mr-auto" src="{{tournament.image.url}}">
+        <div class="details">
+            <h3 class="product-title mt-4">{{tournament.title}}</h3>
+            <p>{{tournament.description}}
+            </p>
+            <br>
+            <p>Organizer: <span class="ml-5 pl-2">{{tournament.organizer}}</span></p>
+            <p>Registeration Fee: <span class="ml-2">${{tournament.entry_fee}}</span></p>
+            <p>Total Prize Pool : <span class="ml-3">${{tournament.prize_pool}}</span></p>
+            <p>Format: <span class="ml-5 pl-4">TBD</span></p>
+            <p>Last Date: <span class="ml-5 pl-2">{{tournament.last_date}}</span></p>
+            <br><br>
+            <div class="btns">
+                <a class="primary_btn" href="{{tournament.get_registeration_url}}">Register Now</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

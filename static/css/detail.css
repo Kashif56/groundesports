@@ -1,0 +1,87 @@
+
+/* Product Detail */
+
+.container-1 {
+    margin-top: 5%;
+    margin-left: 6%;
+    display: flex;
+    width: 80%;
+    margin-bottom: 5%;
+}
+
+.container-1 img {
+    width: 40%;
+    height: 50vh;
+}
+
+.details {
+    margin: 5%;
+}
+
+.path {
+    color: rgb(109, 109, 109);
+}
+
+.path span {
+    padding: 0 4px;
+}
+
+.product-title {
+    padding-top: 4%;
+    letter-spacing: 2px;
+    color: rgb(37, 37, 37);
+}
+
+.container-1 p {
+    padding-top: 20px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: rgb(41, 40, 40);
+}
+.container-1 span{
+    color: black;
+}
+
+
+/* Relative Products */
+
+.relative {
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 45vh;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.card {
+    margin-left: 3%;
+    width: 20%;
+    border-radius: 10px;
+    background-color: rgb(236, 236, 236);
+}
+
+.card img {
+    width: 100%;
+    height: 30vh;
+    background-color: rgba(255, 255, 255, 0.26);
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-left: 2%;
+    font-weight: normal;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.card p {
+    margin-left: 2%;
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+}
+
+.price {
+    color: tomato !important;
+}

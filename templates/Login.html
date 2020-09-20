@@ -1,0 +1,103 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block content%}
+
+
+<style>
+    input {
+        margin-bottom: 20px;
+        width: 90%;
+        height: 30px;
+        padding: .4%;
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    input:focus {
+        border-bottom: 2px rgb(58, 0, 194) solid;
+        outline: none;
+    }
+
+    .error {
+        background-color: lightgreen;
+        padding: 10px 20px;
+        letter-spacing: 2px;
+        font-size: 18px;
+        color: black;
+    }
+
+
+    .container-1 {
+        width: 100%;
+    }
+
+    .login_form {
+        width: 60%;
+        margin: auto;
+    }
+
+    .fee {
+        font-size: 18px;
+        color: rgb(89, 0, 255);
+    }
+
+    .primary_btn {
+        width: 30%;
+        margin-left: 30%;
+    }
+
+    .link {
+        text-align: center;
+    }
+
+    .login {
+        width: 30%;
+        margin-left: 38%;
+    }
+</style>
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+        </div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <div class="page_link">
+                    <a href="{% url 'core:Home' %}">Home</a>
+                    <a href="{% url 'core:Login' %}">LOGIN</a>
+                </div>
+                <h2>LOGIN NOW</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<div class="container-1">
+    {%for message in messages%}
+    <h6 class="error">{{message}}</h6>
+    {%endfor%}
+</div>
+<!-- Login -->
+<div class="container mt-5 mb-5 ml-auto mr-auto">
+    <div class="login_form">
+        <div class="title">
+            <h1 class="mb-4 login">Login</h1>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name='un' placeholder="Username" autocomplete="off"><br>
+            <input type="password" name='password' placeholder="Password" autocomplete="off"><br>
+            <button type="submit" class="btn primary_btn">Login</button>
+        </form>
+        <p class="mt-4 link">Don't have an account? <a href="{% url 'core:Signup' %}" class="btn">Sign up</a></p>
+    </div>
+</div>
+
+{%endblock%}
